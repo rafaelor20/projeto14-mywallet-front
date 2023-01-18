@@ -1,0 +1,4 @@
+nome: rafaelor20
+cpf: 04526154247
+email: rafaelor20@hotmail.com
+senha: Ozzy
