@@ -4,8 +4,8 @@ import { useState, createContext } from 'react';
 import RenderLogin from './components/login'
 import RenderRegister from './components/cadastro'
 import Home from './components/home'
-import Subscription from './components/subscription';
-import Subscriptions from './components/subscriptions';
+import NovaEntrada from './components/novaEntrada';
+import NovaSaida from './components/novaSaida';
 import { loginPostReceiveObj } from './components/apiUrls.js'
 
 export const UserContext = createContext();
@@ -20,9 +20,9 @@ function App() {
           <Routes>
             <Route path="/" element={<RenderLogin />} />
             <Route path="/cadastro" element={<RenderRegister />} />
-            <Route path="/subscriptions/:id" element={<Subscription />} />
-            <Route path="/subscriptions" element={<Subscriptions />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/nova-entrada" element={<NovaEntrada />} />
+            <Route path="/nova-saida" element={<NovaSaida />} />
           </Routes>
         </BrowserRouter>
       </BlackBackground>

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import logo from "./assets/logo.png";
 import { loginPostUrl, loginPostSendObj } from "./apiUrls.js"
 import { UserContext } from "../App";
 
@@ -12,17 +11,6 @@ export default function RenderLogin() {
     const [login, setLogin] = useState(loginPostSendObj)
     const loginProps = { login: login, setLogin: setLogin };
     const userData = useContext(UserContext);
-
-    /*
-    useEffect(() => {
-        const LSEmail = localStorage.getItem("email");
-        const LSPassword = localStorage.getItem("password");
-        if (LSEmail && LSPassword){
-            auxSetLogin(setLogin, LSEmail, LSPassword);
-            Login(loginProps, userData, navigate, setDisableInput);
-        }
-    }, [loginProps, navigate, userData]);*/
-
     return (
         <LoginDiv>
             <Logo>MyWallet</Logo>
