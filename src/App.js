@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState, createContext } from 'react';
-import RenderLogin from './components/login'
-import RenderRegister from './components/cadastro'
-import Home from './components/home'
-import NovaEntrada from './components/novaEntrada';
-import NovaSaida from './components/novaSaida';
-import { loginPostReceiveObj } from './components/apiUrls.js'
+import RenderLogin from './screens/login'
+import RenderRegister from './screens/cadastro'
+import Home from './screens/home'
+import NovaEntrada from './screens/newEntry';
+import NovaSaida from './screens/newExit';
+import { loginPostReceiveObj } from './screens/apiUrls.js'
 
 export const UserContext = createContext();
 
