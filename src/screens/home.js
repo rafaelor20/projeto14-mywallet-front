@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import {
     Container, TopBar, Welcome,
     ExitImg, Content, NoInfo, InfoBox,
-    InfoDate, InfoPrice, Info, BalanceDiv, BalanceFont,
-    BottomBar, NewInfoDiv, NewInfoText, 
+    InfoDate, InfoPrice, Info, InfoInfoDateBox, BalanceDiv, BalanceFont,
+    BottomBar, NewInfoDiv, NewInfoText,
     NewInfoCircle, NewInfoMinus, NewInfoPlus
 } from "../components/home";
 import exit from "../assets/exit.png"
@@ -24,7 +24,7 @@ export default function Home() {
         setBalance(calcBalance(registers));
         console.log(registers);
         console.log(balance)
-    }, [getRegisters, calcBalance]);
+    }, [getRegisters, valueColor]);
 
     return (
         <Container>
@@ -38,7 +38,7 @@ export default function Home() {
                 <>{RenderRegistersList(registers)}</>
                 <BalanceDiv>
                     <BalanceFont>SALDO</BalanceFont>
-                    <InfoPrice>{balance}</InfoPrice>
+                    <InfoPrice color={valueColor(balance)}>{balance}</InfoPrice>
                 </BalanceDiv>
             </Content>
             <BottomBar>
@@ -79,11 +79,15 @@ function RenderRegistersList(registers) {
 }
 
 function RenderRegister(register) {
+    const color = valueColor(register.value)
     return (
         <InfoBox>
+            <InfoInfoDateBox >
             <InfoDate>{register.date}</InfoDate>
             <Info>{register.description}</Info>
-            <InfoPrice>{register.value}</InfoPrice>
+            </InfoInfoDateBox>
+            
+            <InfoPrice color={color}>{register.value}</InfoPrice>
         </InfoBox>
     )
 }
@@ -97,12 +101,18 @@ function getRegisters(transfersPostUrl, setRegisters, userData) {
 }
 
 
-function calcBalance(registers){
+function calcBalance(registers) {
     let balance = 0;
-    for (const element of registers){
+    for (const element of registers) {
         balance = balance + element.value;
     }
     return balance;
 }
 
-
+function valueColor(value) {
+    if (value >= 0) {
+        return "green";
+    } else {
+        return "red";
+    }
+}

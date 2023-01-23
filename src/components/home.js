@@ -31,6 +31,7 @@ top: 78px;
 background: #FFFFFF;
 border-radius: 5px;
 padding: 10px 10px;
+overflow: scroll;
 `
 
 export const NoInfo = styled.p`
@@ -49,6 +50,10 @@ justify-content: space-between;
 margin: 15px 0px;
 `
 
+export const InfoInfoDateBox = styled.div`
+display: flex;
+`
+
 export const Info = styled.p`
 font-family: 'Raleway';
 font-style: normal;
@@ -56,7 +61,8 @@ font-weight: 400;
 font-size: 16px;
 line-height: 19px;
 color: #000000;
-text-align: center;
+text-align: left;
+margin: 0px 5px;
 `
 
 export const InfoPrice = styled.p`
@@ -66,7 +72,7 @@ font-weight: 400;
 font-size: 16px;
 line-height: 19px;
 text-align: right;
-color: #C70000;
+color: ${props => props.color};
 `
 
 export const InfoDate = styled.p`
@@ -75,7 +81,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 19px;
-color: #C6C6C6
+color: #C6C6C6;
 text-align: left;
 `
 
