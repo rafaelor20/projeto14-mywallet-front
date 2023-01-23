@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
     Container, TopBar, Welcome,
     ExitImg, Content, NoInfo, InfoBox,
-    InfoDate, InfoPrice, Info, BottomBar,
-    NewInfoDiv, NewInfoText, NewInfoCircle,
-    NewInfoMinus, NewInfoPlus
+    InfoDate, InfoPrice, Info, BalanceDiv, BalanceFont,
+    BottomBar, NewInfoDiv, NewInfoText, 
+    NewInfoCircle, NewInfoMinus, NewInfoPlus
 } from "../components/home";
 import exit from "../assets/exit.png"
 import circle from "../assets/circle.png"
@@ -18,11 +18,13 @@ import { transfersPostUrl } from "../screens/apiUrls"
 export default function Home() {
     const userData = useContext(UserContext);
     const [registers, setRegisters] = useState([]);
-
+    const [balance, setBalance] = useState(0);
     useEffect(() => {
         getRegisters(transfersPostUrl, setRegisters, userData);
+        setBalance(calcBalance(registers));
         console.log(registers);
-    }, [getRegisters]);
+        console.log(balance)
+    }, [getRegisters, calcBalance]);
 
     return (
         <Container>
@@ -34,6 +36,10 @@ export default function Home() {
             </TopBar>
             <Content>
                 <>{RenderRegistersList(registers)}</>
+                <BalanceDiv>
+                    <BalanceFont>SALDO</BalanceFont>
+                    <InfoPrice>{balance}</InfoPrice>
+                </BalanceDiv>
             </Content>
             <BottomBar>
                 <Link to="/nova-entrada" style={{ textDecoration: 'none' }}>
@@ -91,6 +97,12 @@ function getRegisters(transfersPostUrl, setRegisters, userData) {
 }
 
 
-
+function calcBalance(registers){
+    let balance = 0;
+    for (const element of registers){
+        balance = balance + element.value;
+    }
+    return balance;
+}
 
 

@@ -79,6 +79,20 @@ color: #C6C6C6
 text-align: left;
 `
 
+export const BalanceDiv = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
+export const BalanceFont = styled.p`
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 20px;
+color: #000000;
+`
+
 export const BottomBar = styled.div`
 display: flex;
 justify-content: space-between;
