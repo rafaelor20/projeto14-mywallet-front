@@ -75,7 +75,7 @@ function RenderRegistersList(registers) {
 function RenderRegister(register) {
     return (
         <InfoBox>
-            <InfoDate>30/11</InfoDate>
+            <InfoDate>{register.date}</InfoDate>
             <Info>{register.description}</Info>
             <InfoPrice>{register.value}</InfoPrice>
         </InfoBox>

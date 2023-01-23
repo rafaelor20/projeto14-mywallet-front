@@ -32,8 +32,8 @@ export default function NewEntry() {
 function registerTransfer(transferPostUrl, navigate, userData, value, description){
     const transfer = {
         name: userData.user.name,
-        date: dayjs().format('DD:MM'),
-        value: Number(value),
+        date: dayjs().format('DD/MM'),
+        value: (Number(value) * (-1)),
         description: description
     }
     const request = axios.post(transferPostUrl, transfer);

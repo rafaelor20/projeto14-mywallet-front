@@ -33,7 +33,7 @@ export default function NewEntry() {
 function registerTransfer(transferPostUrl, navigate, userData, value, description){
     const transfer = {
         name: userData.user.name,
-        date: dayjs().format('DD:MM'),
+        date: dayjs().format('DD/MM'),
         value: Number(value),
         description: description
     }
