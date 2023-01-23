@@ -8,7 +8,6 @@ export default function Cadastro() {
     const [disableInput, setDisableInput] = useState(false);
     const [user, setUser] = useState(registerPostObj);
     const userProps = { user: user, setUser: setUser }
-    const [passWordConfirm, setPassWordConfirm] = useState("");
     const navigate = useNavigate();
 
     return (
@@ -17,7 +16,7 @@ export default function Cadastro() {
             <InputBox data-identifier="user-name-input" placeholder="Nome" onChange={e => updateName(e.target.value, userProps)} disabled={disableInput}></InputBox>
             <InputBox data-identifier="email-input" placeholder="E-mail" onChange={e => updateEmail(e.target.value, userProps)} disabled={disableInput}></InputBox>
             <InputBox data-identifier="password-input" placeholder="Senha" onChange={e => updatePassword(e.target.value, userProps)} disabled={disableInput}></InputBox>
-            <InputBox data-identifier="user-image-input" placeholder="Confirme a senha" onChange={e => updatePassWordConfirm(e.target.value, setPassWordConfirm)} disabled={disableInput}></InputBox>
+            <InputBox data-identifier="user-image-input" placeholder="Confirme a senha" onChange={e => updateConfirmPassword(e.target.value, userProps)} disabled={disableInput}></InputBox>
             <LoginButton data-identifier="signup-btn" onClick={() => Register(userProps, navigate, setDisableInput)} disable={disableInput}>
                 <FontButton>
                     Cadastrar
@@ -32,6 +31,7 @@ export default function Cadastro() {
 
 function Register(userProps, navigate, setDisableInput) {
     setDisableInput(true);
+    console.log(userProps.user)
     const request = axios.post(registerPostUrl, userProps.user);
     request.then(() => { navigate('/') });
     request.catch((error) => error.response.data);
@@ -47,8 +47,9 @@ function updateEmail(email, userProps) {
         {
             email: email,
             name: user.name,
-            cpf: user.cpf,
-            password: user.password
+            password: user.password,
+            confirmPassword: user.confirmPassword,
+            transfers: userProps.user.transfers
         }
     );
 }
@@ -60,8 +61,9 @@ function updatePassword(password, userProps) {
         {
             email: user.email,
             name: user.name,
-            cpf: user.cpf,
-            password: password
+            password: password,
+            confirmPassword: user.confirmPassword,
+            transfers: userProps.user.transfers
         }
     );
 }
@@ -73,16 +75,24 @@ function updateName(name, userProps) {
         {
             email: user.email,
             name: name,
-            cpf: user.cpf,
-            password: user.password
+            password: user.password,
+            confirmPassword: user.confirmPassword,
+            transfers: userProps.user.transfers
         }
     );
 }
 
-function updatePassWordConfirm(passWordConfirm, setPassWordConfirm) {
-    setPassWordConfirm(passWordConfirm);
+function updateConfirmPassword(confirmPassword, userProps) {
+    const setUser = userProps.setUser;
+    const user = userProps.user;
+    setUser(
+        {
+            email: user.email,
+            name: user.name,
+            password: user.password,
+            confirmPassword: confirmPassword,
+            transfers: userProps.user.transfers
+        }
+    );
 }
 
-function equalPasswords(password, passWordConfirm){
-    return (password === passWordConfirm);
-}

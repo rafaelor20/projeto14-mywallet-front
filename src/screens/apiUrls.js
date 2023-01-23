@@ -1,99 +1,25 @@
-export const registerPostUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up";
+export const registerPostUrl = "http://127.0.0.1:5000/sign-up";
 export const registerPostObj = {
 	email: "",
 	name: "",
-	password: ""
+	password: "",
+	confirmPassword: "",
+	transfers: []
 };
 
-
-export const loginPostUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/auth/login";
+export const loginPostUrl = "http://127.0.0.1:5000/sign-in";
 export const loginPostSendObj = {
 	email: "...",
-	password: "..."
+	password: "...",
 };
 
-export const loginPostReceiveObj =
-{
-	id: 0,
+export const loginPostReceive = {
 	name: "",
-	cpf: "",
-	email: "",
-	password: "",
-	token: "",
-	membership: {
-		id: 0,
-		name: "",
-		image: "",
-		price: "",
-		perks: []
-	}
+	token: ""
 };
 
-export const subscriptionsLstGetUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships";
-// config = { headers: { Authorization: `Bearer ${token}` } };
+export const transferPostUrl = "http://127.0.0.1:5000/transfer";
 
-
-export const subscriptionLstReceiveGetObj = [];
-
-
-export const subscriptionGetUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships/" // + ID_DO_PLANO
-export const subscriptionObj = {
-	id: 0,
-	name: "",
-	image: "",
-	price: "",
-	perks: []
-}
-
-export const subscribeGetUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions";
-export const subscribeGetSendObj = {
-    membershipId: 0,
-    cardName: "",
-    cardNumber: "",
-    securityNumber: 0,
-    expirationDate: ""
-}
-// config = { headers: { Authorization: `Bearer ${token}` } };
-
-export const subscribeGetReceiveObj = {
-    id: 0,
-    name: "",
-    image: "",
-    price: "",
-    perks: []
-}
-
-export const habitsTodayUrl = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
-// config = { headers: { Authorization: `Bearer ${token}` } };
-export const habitsTodayReceive = [
-	{
-		"id": 0,
-		"name": "",
-		"done": false,
-		"currentSequence": 0,
-		"highestSequence": 0
-	}
-];
-
-export const changePlanGetUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions";
-
-export const changePlanSendObj = {
-    membershipId: 0,
-    cardName: "",
-    cardNumber: "",
-    securityNumber: 0,
-    expirationDate: ""
-}
-// config = { headers: { Authorization: `Bearer ${token}` } };
-
-
-export const changePlanReceiveObj = {
-    id: 0,
-    name: "",
-    image: "",
-    price: "",
-    perks: []
-}
-
-export const deletePlanUrl = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions"
-// config = { headers: { Authorization: `Bearer ${token}` } };
+export const transfersPostUrl = "http://127.0.0.1:5000/transfers";
+export const transfersPostSendObj = {name: ''}
+export const transfersGetReceive = [];

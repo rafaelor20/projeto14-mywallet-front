@@ -6,12 +6,12 @@ import RenderRegister from './screens/cadastro'
 import Home from './screens/home'
 import NovaEntrada from './screens/newEntry';
 import NovaSaida from './screens/newExit';
-import { loginPostReceiveObj } from './screens/apiUrls.js'
+import { loginPostReceive } from './screens/apiUrls.js'
 
 export const UserContext = createContext();
 
 function App() {
-  const [user, setUser] = useState(loginPostReceiveObj);
+  const [user, setUser] = useState(loginPostReceive);
   const userData = { user: user, setUser: setUser };
   return (
     <UserContext.Provider value={userData}>

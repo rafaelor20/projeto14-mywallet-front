@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { LoginDiv, Logo, InputBox, LoginButton, FontButton, OtherPage } from "../components/login"
 import { loginPostUrl, loginPostSendObj } from "./apiUrls.js"
@@ -33,27 +33,16 @@ function Login(loginProps, userData, navigate, setDisableInput) {
     const request = axios.post(loginPostUrl, loginProps.login);
     const setUser = userData.setUser;
     request.then(server => {
-        setUser(server.data);
-        localStorage.setItem("email", server.data.email);
-        localStorage.setItem("password", server.data.password);
+        setUser({name: server.data.name,
+            token: server.data.token});
+        console.log(server.data)
     });
     request.then((server) => {
-        if (server.data.membership === null) {
-            navigate('/subscriptions');
-        } else {
-            navigate('/home');
-        }
+        navigate('/home');
     });
     request.catch((error) => error.response.data);
     request.catch((error) => { alert("Erro no login") });
     setDisableInput(false);
-}
-
-function auxSetLogin(setLogin, email, password) {
-    setLogin({
-        email: email,
-        password: password
-    })
 }
 
 function updateEmail(email, loginProps) {
