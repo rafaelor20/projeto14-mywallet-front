@@ -21,10 +21,12 @@ export default function Home() {
     const [balance, setBalance] = useState(0);
     useEffect(() => {
         getRegisters(transfersPostUrl, setRegisters, userData);
-        setBalance(calcBalance(registers));
-        console.log(registers);
-        console.log(balance)
     }, [getRegisters, valueColor]);
+
+    useEffect(() => {
+        setBalance(calcBalance(registers));
+        console.log("oi")
+    })
 
     return (
         <Container>
